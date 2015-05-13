@@ -41,7 +41,7 @@
                         duration = moment.duration(val);
                         updateTime();
                     } else {
-                        $element.html('Never');
+                        $element.html('Ni napovedi!');
                     }
                 });
             }
