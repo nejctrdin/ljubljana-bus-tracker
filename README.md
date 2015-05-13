@@ -18,4 +18,4 @@ Then point your browser at [http://localhost:3000](http://localhost:3000).
 
 ## Cloud hosted version
 
-Due to public demand, we might consider offering a public cloud hosted version of the application.
+Due to public demand, we published the app on the OpenShift cloud. You can see it in action here [http://ljubljanabustracker-nejctrdin.rhcloud.com](http://ljubljanabustracker-nejctrdin.rhcloud.com/).
