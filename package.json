@@ -1,7 +1,7 @@
 {
-  "name": "dublin-bus-tracker",
-  "version": "0.1.0",
-  "description": "Simple app to show the next Dublin Bus on a dashboard",
+  "name": "ljubljana-bus-tracker",
+  "version": "0.2.0",
+  "description": "Simple app to show the next Ljubljana Bus on a dashboard",
   "main": "server.js",
   "scripts": {
     "start": "HOME=$OPENSHIFT_DATA_DIR pm2 start server.js",
@@ -9,9 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/horsemeat/dublin-bus-tracker.git"
+    "url": "git@github.com:nejctrdin/ljubljana-bus-tracker.git"
   },
   "contributors": [
+    {
+      "name": "Nejc Trdin",
+      "email": "nejc.trdin@gmail.com"
+    },
     {
       "name": "Andrea Spadaccini",
       "email": "andrea.spadaccini@gmail.com"

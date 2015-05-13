@@ -1,11 +1,11 @@
 {
-  "name": "dublin-bus-tracker",
+  "name": "ljubljana-bus-tracker",
   "version": "0.2.0",
-  "homepage": "https://github.com/horsemeat/dublin-bus-tracker",
+  "homepage": "https://github.com/nejctrdin/ljubljana-bus-tracker",
   "authors": [
-    "Antonino Parisi <tabman83@gmail.com>"
+    "Nejc Trdin <nejc.trdin@gmail.com>"
   ],
-  "description": "Simple app to show the next Dublin Bus on a dashboard",
+  "description": "Simple app to show the next Ljubljana Bus on a dashboard",
   "license": "GNU AFFERO GENERAL PUBLIC LICENSE",
   "private": true,
   "ignore": [
@@ -22,5 +22,5 @@
     "moment": "~2.9.0",
     "angular-audio": "~1.6.2",
     "awesome-bootstrap-checkbox": "~0.3.4"
-  }
+  },
 }
