@@ -145,6 +145,19 @@ function fetchBuses() {
 router.use('/bower_components',  express.static(__dirname + '/bower_components'));
 router.use(express.static(path.resolve(__dirname, 'client')));
 
+function sortByWaitingTime(a, b){
+  var fst = moment.tz(a.expectedTimeTxt, "HH:mm", "Europe/Ljubljana").utc();
+  var snd = moment.tz(b.expectedTimeTxt, "HH:mm", "Europe/Ljubljana").utc();
+  if(fst.isAfter(snd))
+  {
+    return 1;
+  }
+  else
+  {
+    return -1;
+  }
+}
+
 function pushBuses() {
   console.log("Start pushBuses");
   for (var socket_id in clients) {
@@ -174,7 +187,7 @@ function pushBuses() {
         result.push(bus);
       }
     }
-    
+    result.sort(sortByWaitingTime); 
     clientData.socket.emit("bus", result);
   }
 }
