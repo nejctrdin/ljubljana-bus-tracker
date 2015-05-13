@@ -58,31 +58,63 @@ function createParser(stop) {
       var error_data = {
         "error": "error message from server"
       };
-      console.log("Error from dublin bus server: " + error);
+      console.log("Error from ljubljana bus server: " + error);
       rtpi_data[stop].push(error_data);
     }else{
       $ = cheerio.load(result);
-      console.log("after load stop " + stop);
-      $("#rtpi-results tr").each(function(_, tr) {
-        var bus = $(tr).find("td").eq(0).text().trim().toLowerCase();
-        console.log("bus: " + bus);
-        
-        // Skip the header row.
-        if (bus !== "Route" && bus !== "") {
-          var expected_time_txt = $(tr).find("td").eq(2).text().trim();
-          if (expected_time_txt === "Due") {
-            expected_time_txt = new Date().getHours() + ":" + new Date().getMinutes();
-          }
-          var expected_time = moment.tz(expected_time_txt, 'HH:mm', 'Europe/Dublin').utc();
+      console.log("Loading stop information " + stop);
+      var bus = "";
+      $(".EvenRow").each(function(_, td) {
+        $(td).find("td").each(function(i, x){
+            if(i==0)
+            {
+                var patt = /[1-9]+/;
+                var busDesc = patt.exec($(x).text());
+                if(busDesc != null)
+                {
+                    bus = busDesc[0];
+                }
+            }
+            else
+            {
+              parseTime(bus, x, stop); 
+            }
+        });
+      });
+      $(".OddRow").each(function(_, td) {
+        $(td).find("td").each(function(i, x){
+            if(i==0)
+            {
+                // Grab the bus number
+                var patt = /[1-9]+/;
+                var busDesc = patt.exec($(x).text());
+                if(busDesc != null)
+                {
+                    bus = busDesc[0];
+                }
+            }
+            else
+            {
+              parseTime(bus, x, stop); 
+            }
+        });
+      });
+    }
+  };
+}
 
-          var now = moment.utc();
-          console.log(now.format());
-          var expected_wait = moment.duration(0);
-          
-          if(expected_time.isAfter(now)) {
-            expected_wait = moment.duration(+expected_time - +now);
-          }
-  
+function parseTime(bus, td, stop){
+  if(bus != "")
+    {
+      var expected_time_txt = $(td).text().replace("n ","");
+      if(expected_time_txt!="")
+      {
+        var expected_time = moment.tz(expected_time_txt, 'HH:mm', 'Europe/Ljubljana').utc();
+        var now = moment.utc();
+            
+        if(expected_time.isAfter(now)) {
+          expected_wait = moment.duration(expected_time - now);
+      
           var bus_data = {
             "busName": bus,
             "stopId": stop,
@@ -90,26 +122,23 @@ function createParser(stop) {
             "expectedTime": expected_time.toISOString(),
             "expectedWait": expected_wait.toISOString()
           };
-          
+              
           rtpi_data[stop].push(bus_data);
           console.log("Added data about " + stop + " (" + bus + " @ " + expected_time_txt + ")");
-        }
-      });
-    }
-  };
+        } 
+      }
+  }
 }
 
-// Fetches all the required info for all the tracked_stops from the Dublin Bus 
+// Fetches all the required info for all the tracked_stops from the Ljubljana Bus 
 // site, and puts it in rtpi_data.
 function fetchBuses() {
-  var url_template = "http://www.dublinbus.ie/en/RTPI/Sources-of-Real-Time-Information/?searchtype=view&searchquery=";
-  
+  var telargo_template = "http://bus.talktrack.com/Default.aspx";
+  var check = "/wEPDwULLTE2MTk2MjY4MTlkZBVx62zRY0P/EKQ2cGaGd+2sXcYM";
   console.log("Start fetchBuses()");
   for (var stop in tracked_stops) {
-    console.log("fetching data for " + stop);
-    var url = url_template + stop;
-    
-    request.get(url, createParser(stop)); 
+    console.log("Fetching data for " + stop);
+    request.post({url:telargo_template, form:{tb_stationNo:stop, __VIEWSTATE: check}}, createParser(stop));
   }
 }
 
