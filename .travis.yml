@@ -3,3 +3,12 @@ node_js:
 - '0.12'
 - '0.11'
 - '0.10'
+deploy:
+  provider: openshift
+  user: nejc.trdin@gmail.com
+  password:
+    secure: Cu+ZK6FBBi9mVU9ggUlFkjRMhPGlqxgYmuqh1IQaeprLqoDkkn5IGpyW+qDo8XT/VZzg0xOEGuWQEpuC4gbeMfa+Q3NrrJtqO323XhM7rVkKoqENNDGNUX6A+uiWspbYS/sun+47N5JCsYfdPpEciDHwhakqttD7UzPYDUCTbKHy5dNnSgT8XOB6sN7/YYAgLwKkH1eXJeVob1+BlzgHH+1QMEzfkJNs5nSRU2VQCnDossiWFwk7efE5tmfh9OIrRK8sWUBHSTMFCuHcKvjPKfmPZhIg0HmNineKDpb19DLIyBHIjco3S67tCh/ujpxMhCtfLzL6w9EfQZpP9xS5NFlX1iLV7RVJl+TlI+vqVxrYtksrdkbPcTAqHmSXZ3QF3a1jL13K2qwR2IOcRcg/YgHW6ISA2C4DaiAn4Bv7NpCV0EhXjtlQ8Po7IhCEJM6488JiKBLL4+6S87PWdaeBST//L29T7tEYtLVRDW3KaYtlz3NIxRYfkif0QfCxX35JO8YWG2EtXUXwB5S5XD9FRbB1mW/Zb9pML1E7oH+/NVt3IQLqlaOTNw42j58UTwHzTn8a3P0wdGn+oNP4Xe76Et2KBzEKIjbqpjanM81+4fRweL9svva8E/ENc1ZSZvgbq/9qk7VU/zL4XVaBRkjr9e2ObHn9jbNFNeLi+Mf0mZo=
+  app: ljubljanabustracker
+  domain: nejctrdin
+  on:
+    repo: nejctrdin/ljubljana-bus-tracker
