@@ -14,15 +14,21 @@
         return {
             restrict: 'A',
             link: function($scope, $element, $attrs) {
-                
                 var template = $element.html();
                 var timerPromise = null;
                 var duration = moment.duration(0);
                 
                 function applyTemplate(m) {
                     var result = template;
-                    result = result.replace('{h}', m.hours());
-                    result = result.replace('{m}', m.minutes());
+                    if(m.hours() > 0)
+                    {
+                        var newStr = m.hours()+"<small>H</small> "+m.minutes();
+                        result = result.replace('{m}', newStr);
+                    }
+                    else
+                    {
+                        result = result.replace('{m}', m.minutes());
+                    }
                     result = result.replace('{s}', m.seconds());
                     return result;
                 }

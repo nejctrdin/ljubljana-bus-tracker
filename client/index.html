@@ -70,9 +70,9 @@
     <div class="container-fluid" ng-controller="MainController">
       <div class="circle" ng-class="{ green: isConnected, red: !isConnected }"></div>
       <div class="row" ng-cloak>
-        <h1 ng-class="{ 'alert-danger': isRunningOutOfTime }"  countdown="nextBus.expectedWait"><span ng-if="h > 0">{h}<small>H</small> </span>{m}<small>M</small> {s}<small>S</small></h1>
+        <h1 ng-class="{ 'alert-danger': isRunningOutOfTime }"  countdown="nextBus.expectedWait">{m}<small>M</small> {s}<small>S</small></h1>
         <h2><small>Naslednji bus {{$storage.busName}} na postaji {{$storage.stopId}}</small></h2>
-        <h2 ng-repeat="otherBus in otherBuses" countdown="otherBus.expectedWait"><span ng-if="h > 0">{h}<small>H</small> </span>{m}<small>M</small></h2>
+        <h2 ng-repeat="otherBus in otherBuses" countdown="otherBus.expectedWait">{m}<small>M</small></h2>
         <h2 ng-if="otherBuses.length===0">None</h2>
       </div>
     </div>
