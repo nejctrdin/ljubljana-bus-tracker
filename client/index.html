@@ -25,25 +25,25 @@
         <div class="drawer-body" ng-controller="MenuController">
           <form class="form-horizontal" role="form">
             <div class="form-group">
-              <label for="inputStopId" class="col-sm-6 control-label">Stop ID:</label>
+              <label for="inputStopId" class="col-sm-6 control-label">Postaja:</label>
               <div class="col-sm-6">
                 <input type="text" ng-model="$storage.stopId" class="form-control" id="inputStopId" ng-model-options="{ updateOn: 'blur' }" placeholder="" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="inputBusName" class="col-sm-6 control-label">Bus name:</label>
+              <label for="inputBusName" class="col-sm-6 control-label">Bus:</label>
               <div class="col-sm-6">
                 <input type="text" ng-model="$storage.busName" class="form-control" id="inputBusName" ng-model-options="{ updateOn: 'blur' }" placeholder="" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="inputWarningTime" class="col-sm-6 control-label">Warn if less than:</label>
+              <label for="inputWarningTime" class="col-sm-6 control-label">Opozorilo, če manj kot:</label>
               <div class="col-sm-6">
                 <input type="number" ng-model="$storage.warningTime" class="form-control" id="inputWarningTime" placeholder="">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputEnableAudio" class="col-sm-6 control-label">Enable audio:</label>
+              <label for="inputEnableAudio" class="col-sm-6 control-label">Omogoči zvok:</label>
               <div class="col-sm-6">
                 <div class="checkbox">
                   <input type="checkbox" id="inputEnableAudio" ng-model="$storage.isAudioEnabled">
@@ -59,7 +59,7 @@
               </div>
             </div>
             -->
-            <div class="alert alert-danger" role="alert" ng-if="!isConnected">You are offline.</div>
+            <div class="alert alert-danger" role="alert" ng-if="!isConnected">Nisi povezan!</div>
           </form>
         </div>
         <div class="drawer-footer">
@@ -71,7 +71,7 @@
       <div class="circle" ng-class="{ green: isConnected, red: !isConnected }"></div>
       <div class="row" ng-cloak>
         <h1 ng-class="{ 'alert-danger': isRunningOutOfTime }"  countdown="nextBus.expectedWait"><span ng-if="h > 0">{h}<small>H</small> </span>{m}<small>M</small> {s}<small>S</small></h1>
-        <h2><small>Next {{$storage.busName}} to {{$storage.stopId}}</small></h2>
+        <h2><small>Naslednji bus {{$storage.busName}} na postaji {{$storage.stopId}}</small></h2>
         <h2 ng-repeat="otherBus in otherBuses" countdown="otherBus.expectedWait"><span ng-if="h > 0">{h}<small>H</small> </span>{m}<small>M</small></h2>
         <h2 ng-if="otherBuses.length===0">None</h2>
       </div>
