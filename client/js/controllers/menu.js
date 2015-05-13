@@ -8,7 +8,7 @@
 (function(angular, undefined) {
     'use strict';
     
-    angular.module('DublinBusTrackerApp').controller('MenuController', ['$scope', '$window', '$localStorage', 'webSocket', '$rootScope', function($scope, $window, $localStorage, webSocket, $rootScope) {
+    angular.module('LjubljanaBusTrackerApp').controller('MenuController', ['$scope', '$window', '$localStorage', 'webSocket', '$rootScope', function($scope, $window, $localStorage, webSocket, $rootScope) {
         var unwatch = angular.noop();
         var timerPromise = null;
 

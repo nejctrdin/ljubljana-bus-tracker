@@ -8,7 +8,7 @@
 (function(angular, undefined) {
     'use strict';
     
-    angular.module('DublinBusTrackerApp').directive('countdown', ['$timeout', '$animate', '$compile', '$localStorage', function($timeout, $animate, $compile, $localStorage) {
+    angular.module('LjubljanaBusTrackerApp').directive('countdown', ['$timeout', '$animate', '$compile', '$localStorage', function($timeout, $animate, $compile, $localStorage) {
         var oneSecond = moment.duration(1, 'second');
         return {
             restrict: 'A',

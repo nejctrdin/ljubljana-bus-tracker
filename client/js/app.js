@@ -9,7 +9,7 @@
     'use strict';
     
     angular
-        .module('DublinBusTrackerApp', ['ngStorage', 'ngAnimate', 'ngAudio', 'btford.socket-io'])
+        .module('LjubljanaBusTrackerApp', ['ngStorage', 'ngAnimate', 'ngAudio', 'btford.socket-io'])
         .factory('webSocket', function (socketFactory) {
             var webSocket = socketFactory();
             webSocket.forward('connect')

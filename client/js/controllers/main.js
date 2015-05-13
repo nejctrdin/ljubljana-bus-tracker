@@ -7,7 +7,7 @@
 
 (function(angular, undefined) {
     'use strict';
-    angular.module('DublinBusTrackerApp').controller('MainController', ['$scope', '$interval', '$rootScope', 'ngAudio', function($scope, $interval, $rootScope, ngAudio) {
+    angular.module('LjubljanaBusTrackerApp').controller('MainController', ['$scope', '$interval', '$rootScope', 'ngAudio', function($scope, $interval, $rootScope, ngAudio) {
       
         var sound = ngAudio.load("sounds/klaxon.mp3");
         //git sound.loop = true;
