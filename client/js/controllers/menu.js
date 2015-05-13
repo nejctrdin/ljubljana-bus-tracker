@@ -1,7 +1,8 @@
 /**
   * @file        menu.js
   * @author      Antonino Parisi <tabman83@gmail.com>
-  * @date        30/03/2015 13:35
+  * @author      Nejc Trdin <nejc.trdin@gmail.com>
+  * @date        13/05/2015 13:40
   * @description Menu controller
   */
 

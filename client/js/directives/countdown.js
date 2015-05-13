@@ -1,7 +1,8 @@
 /**
   * @file        countdown.js
   * @author      Antonino Parisi <tabman83@gmail.com>
-  * @date        31/03/2015 13:15
+  * @author      Nejc Trdin <nejc.trdin@gmail.com>
+  * @date        13/05/2015 13:41
   * @description Countdown directive
   */
 
@@ -28,7 +29,6 @@
 
                 function updateTime() {
                     $element.html(applyTemplate(duration));
-                    //$compile($element.contents())($scope);
                     duration.subtract(oneSecond);
                     if( duration.asSeconds() > 1 ) {
                         timerPromise = $timeout(updateTime, 1000);
@@ -40,11 +40,6 @@
                     if(val) {
                         duration = moment.duration(val);
                         updateTime();
-                        /*
-                        $animate.addClass($element, 'update').then(function() {
-                            $animate.removeClass($element, 'update');
-                        });
-                        */
                     } else {
                         $element.html('Never');
                     }
